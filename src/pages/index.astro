@@ -1,11 +1,19 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Navbar from '../components/Navbar.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Accueil - PixelPerfect">
+  <Navbar />
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
+        Bienvenue chez <span class="text-blue-600">PixelPerfect</span>
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Votre agence web spécialisée en création de sites et applications web
+      </p>
+    </div>
+  </div>
 </Layout>
