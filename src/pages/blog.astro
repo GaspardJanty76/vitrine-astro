@@ -1,18 +1,98 @@
 ---
-import Layout from "../layouts/Layout.astro"
-import Navbar from "../components/Navbar.astro";
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import BlogCard from '../components/BlogCard.astro';
+
+
+const sortedPosts = [
+  {
+    data: {
+      title: "Pourquoi AstroJS révolutionne les performances web",
+      description: "Découvrez comment AstroJS améliore drastiquement les performances de vos sites web grâce à son architecture Islands et sa génération statique.",
+      pubDate: new Date('2024-12-15'),
+      author: "Sarah Martin",
+      image: "public/images/performance.webp",
+      tags: ["AstroJS", "Performance", "Web Development"]
+    },
+    slug: "astro-performances"
+  },
+  {
+    data: {
+      title: "Intégrer React dans AstroJS : Guide complet",
+      description: "Apprenez à intégrer efficacement des composants React dans vos projets AstroJS pour créer des interfaces interactives performantes.",
+      pubDate: new Date('2024-12-10'),
+      author: "Thomas Dubois",
+      image: "public/images/astro.webp",
+      tags: ["React", "AstroJS", "Integration"]
+    },
+    slug: "react-astro"
+  },
+  {
+    data: {
+      title: "Créer un design system avec Tailwind CSS",
+      description: "Découvrez comment structurer et organiser vos styles Tailwind CSS pour créer un design system cohérent et maintenable.",
+      pubDate: new Date('2024-12-05'),
+      author: "Marie Leclerc",
+      image: "public/images/tailwind.webp",
+      tags: ["Tailwind CSS", "Design System", "CSS"]
+    },
+    slug: "tailwind-design-system"
+  }
+];
 ---
 
 <Layout title="Blog - PixelPerfect">
-    <Navbar />
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="text-center mb-12">
-            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
-                Notre <span class="text-blue-600">Blog</span>
-            </h1>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Découvrez nos derniers articles sur les tendances du web, les technologies et les conseils pour réussir votre projet numérique.
-            </p>
-        </div>
-    
+  <Navbar />
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          Nos derniers <span class="text-blue-600">articles</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Restez à jour avec les dernières tendances du développement web et les conseils de nos experts
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sortedPosts.map((post) => (
+          <BlogCard 
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            author={post.data.author}
+            image={post.data.image}
+            slug={post.slug}
+            tags={post.data.tags}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+        Restez informé de nos derniers articles
+      </h3>
+      <p class="text-gray-600 mb-8">
+        Recevez nos conseils et astuces directement dans votre boîte mail
+      </p>
+      <form class="max-w-md mx-auto flex gap-4">
+        <input 
+          type="email" 
+          placeholder="Votre adresse email" 
+          class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          required
+        />
+        <button 
+          type="submit" 
+          class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-300"
+        >
+          S'abonner
+        </button>
+      </form>
+    </div>
+  </section>
 </Layout>
