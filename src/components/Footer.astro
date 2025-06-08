@@ -1,6 +1,15 @@
 ---
 const currentYear = new Date().getFullYear();
 
+const services = [
+  { name: 'Création de sites web', href: '/services#website' },
+  { name: 'Applications web', href: '/services#website' },
+  { name: 'E-commerce', href: '/services#website' },
+  { name: 'Référencement SEO', href: '/services#website' },
+  { name: 'Maintenance', href: '/services#maintenance' }
+];
+
+
 const quickLinks = [
   { name: 'Accueil', href: '/' },
   { name: 'À propos', href: '/about' },
@@ -51,6 +60,20 @@ const socialLinks = [
             <span>Rouen, France</span>
           </div>
         </div>
+      </div>
+
+      <div>
+        <h4 class="text-lg font-semibold mb-6 text-white">Nos Services</h4>
+        <ul class="space-y-3">
+          {services.map((service) => (
+            <li>
+              <a href={service.href} class="text-gray-300 hover:text-blue-400 transition-colors duration-200 flex items-center">
+                <span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+                {service.name}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div>
